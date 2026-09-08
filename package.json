@@ -1,0 +1,67 @@
+{
+  "name": "directus-extension-single-session",
+  "version": "1.0.0",
+  "description": "Sitefinity-style single active session for Directus: when the same user logs in from a second device, the new device is asked to either kick the other session or go back to the login screen.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-extension-bundle",
+    "session",
+    "single-session",
+    "concurrent-login"
+  ],
+  "files": [
+    "dist"
+  ],
+  "directus:extension": {
+    "type": "bundle",
+    "path": {
+      "app": "dist/app.js",
+      "api": "dist/api.js"
+    },
+    "entries": [
+      {
+        "type": "hook",
+        "name": "single-session-tracker",
+        "source": "src/hook/index.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "single-session",
+        "source": "src/endpoint/index.ts"
+      },
+      {
+        "type": "module",
+        "name": "single-session-watcher",
+        "source": "src/module/index.ts"
+      }
+    ],
+    "host": "^10.10.0 || ^11.0.0 || ^12.0.0"
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify",
+    "link": "directus-extension link",
+    "validate": "directus-extension validate",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "^18.0.4",
+    "@directus/types": "^16.2.0",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "vue": "^3.5.24"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luanhang1807/directus-extension-single-session.git"
+  },
+  "homepage": "https://github.com/luanhang1807/directus-extension-single-session#readme",
+  "bugs": {
+    "url": "https://github.com/luanhang1807/directus-extension-single-session/issues"
+  },
+  "author": "luanhang1807"
+}
